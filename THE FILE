@@ -66,14 +66,9 @@ def display_goodbye():
 def display_loading():
     """Display a simple loading message."""
     print("Preparing game...")
-    time.sleep(1)
     print("Game is ready!")
     print()
 
-
-def clear_screen():
-    """Clear the terminal screen."""
-    os.system("cls" if os.name == "nt" else "clear")
 
 
 # SECTION : MAIN MENU
@@ -89,8 +84,6 @@ def display_menu():
     print("2. Instructions")
     print("3. Stats")
     print("4. Game Rules")
-    print("5. Reset Stats")
-    print("6. Exit Game")
 
     print_small_line()
 
@@ -100,15 +93,15 @@ def get_menu_choice():
 
     while True:
 
-        choice = input("Select an option (1-6): ")
+        choice = input("Select an option (1-4): ")
 
         choice = choice.strip()
 
-        if choice in ["1", "2", "3", "4", "5", "6"]:
+        if choice in ["1", "2", "3", "4"]:
             return choice
 
         print("Invalid selection.")
-        print("Please enter a number from 1 to 6.")
+        print("Please enter a number from 1 to 4.")
 
 
 def return_to_menu():
@@ -127,35 +120,27 @@ def display_instructions():
     print("HOW TO PLAY")
     print_small_line()
 
-    print("Step 1:")
     print("The computer randomly selects a number.")
     print()
 
-    print("Step 2:")
     print("The number will be between 1 and 100.")
     print()
 
-    print("Step 3:")
     print("Enter your guess using your keyboard.")
     print()
 
-    print("Step 4:")
     print("The computer will provide a hint.")
     print()
 
-    print("Step 5:")
     print("If your guess is too low, guess higher.")
     print()
 
-    print("Step 6:")
     print("If your guess is too high, guess lower.")
     print()
 
-    print("Step 7:")
-    print("Continue until you guess correctly.")
+    print("Continue guessing until you guess correctly.")
     print()
 
-    print("Step 8:")
     print("The game will display your total guesses.")
     print_small_line()
 
@@ -174,11 +159,11 @@ def display_rules():
 
     print("1. The number is between 1 and 100.")
     print("2. You must enter whole numbers.")
-    print("3. Numbers below 1 are not accepted.")
-    print("4. Numbers above 100 are not accepted.")
+    print("3. Numbers below 1 are NOT accepted.")
+    print("4. Numbers above 100 are NOT accepted.")
     print("5. You can make UNLIMITED guesses.")
     print("6. Every valid guess counts as an attempt.")
-    print("7. Invalid inputs do not count.")
+    print("7. Invalid inputs do not count as an attempt.")
     print("8. The game continues until you win.")
     print("9. You can play multiple rounds.")
     print("10. Your statistics can be saved.")
@@ -800,7 +785,7 @@ def ask_to_play_again():
     while True:
 
         answer = input(
-            "Would you like to play again? (yes/no): "
+            "Would you like to play again? (YES/NO): "
         )
 
         answer = answer.strip().lower()
@@ -866,11 +851,6 @@ def open_statistics():
 
     display_statistics()
 
-
-def open_reset_menu():
-    """Open the reset statistics screen."""
-
-    reset_statistics()
 
 
 # SECTION : MAIN PROGRAM

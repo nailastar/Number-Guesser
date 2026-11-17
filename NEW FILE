@@ -3,12 +3,42 @@ import random
 attempts = 10
 
 
-def display_rules():
-    print("Welcome to Number Guesser!\n")
-    print("A number between 1 and 100 has been selected.")
-    print("You have 10 attempts to guess it.\n")
+# DISPLAY FUNCTIONS
+
+def print_line():
+    """Display a long divider."""
+    print("=" * 55)
+
+
+def print_small_line():
+    """Display a smaller divider."""
+    print("-" * 55)
+
+
+def display_title():
+    """Display the game title."""
+    print_line()
+    print("              NUMBER GUESSER")
+    print_line()
+
+
+def display_welcome():
+    """Welcome the player."""
+    display_title()
+
+    print("Welcome to Number Guesser!")
+    print()
+    print("The computer will select a random number.")
+    print("Your job is to guess the correct number.")
+    print("The number will be between 1 and 100.")
+    print()
+    print("You have ONLY 10 attempts!")
+    print_line()
+
+
 
 #THE GAME STUFF
+
 
 def play_game(number, attempt=1):
     if attempt > attempts:

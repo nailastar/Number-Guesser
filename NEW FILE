@@ -78,7 +78,7 @@ def play_game(number, attempt=1):
 
 
 # Start the game
-display_rules()
+
 
 random_number = random.randint(1, 100)
 

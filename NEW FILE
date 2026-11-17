@@ -78,13 +78,50 @@ def play_game(number, attempt=1):
 
 
 # Start the game
-
+print_line()
+diplay_menu()
 
 random_number = random.randint(1, 100)
 
 play_game(random_number)
 
 
-#GAME MENU SCREEN CHOOSING
+# GAME MENU SCREEN CHOOSING
 
+
+def display_menu():
+    """Display all menu options."""
+    display_title()
+
+    print("MAIN MENU")
+    print_small_line()
+
+    print("1. Start New Game")
+    print("2. Instructions")
+    print("3. Stats")
+    print("4. Game Rules")
+
+    print_small_line()
+
+
+def get_menu_choice():
+    """Get a valid menu selection."""
+
+    while True:
+
+        choice = input("Select an option (1-4): ")
+
+        choice = choice.strip()
+
+        if choice in ["1", "2", "3", "4"]:
+            return choice
+
+        print("Invalid selection.")
+        print("Please enter a number from 1 to 4.")
+
+
+def return_to_menu():
+    """Pause before returning to the menu."""
+    print()
+    input("Press Enter to return to the menu...")
 

@@ -8,7 +8,7 @@ MAX_NUMBER = 100
 STATS_FILE = "game_statistics.json"
 
 # Name of the game.
-GAME_NAME = "Number Guessing Game"
+GAME_NAME = "Number Guesser"
 
 # Number of games played.
 games_played = 0
@@ -23,9 +23,7 @@ total_guesses = 0
 best_guesses = None
 
 
-# =========================================================
-# SECTION 3: DISPLAY FUNCTIONS
-# =========================================================
+# SECTION : DISPLAY FUNCTIONS
 
 def print_line():
     """Display a long divider."""
@@ -78,9 +76,7 @@ def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
 
 
-# =========================================================
-# SECTION 4: MAIN MENU
-# =========================================================
+# SECTION : MAIN MENU
 
 def display_menu():
     """Display all menu options."""
@@ -121,9 +117,7 @@ def return_to_menu():
     input("Press Enter to return to the menu...")
 
 
-# =========================================================
-# SECTION 5: GAME INSTRUCTIONS
-# =========================================================
+# SECTION : GAME INSTRUCTIONS
 
 def display_instructions():
     """Explain how the game works."""
@@ -194,9 +188,7 @@ def display_rules():
     return_to_menu()
 
 
-# =========================================================
-# SECTION 6: RANDOM NUMBER GENERATION
-# =========================================================
+# SECTION : RANDOM NUMBER GENERATION
 
 def generate_secret_number():
     """Generate the computer's secret number."""
@@ -230,9 +222,7 @@ def create_new_number():
     return number
 
 
-# =========================================================
-# SECTION 7: INPUT VALIDATION
-# =========================================================
+# SECTION : INPUT VALIDATION
 
 def validate_integer(user_input):
     """Check whether the input is a whole number."""
@@ -282,9 +272,7 @@ def get_valid_guess():
         return guess
 
 
-# =========================================================
-# SECTION 8: HIGHER AND LOWER HINTS
-# =========================================================
+# SECTION : HIGHER AND LOWER HINTS
 
 def check_guess(guess, secret_number):
     """Compare the player's guess with the secret number."""
@@ -337,9 +325,7 @@ def provide_hint(guess, secret_number):
     return result
 
 
-# =========================================================
-# SECTION 9: GUESS COUNTER
-# =========================================================
+# SECTION : GUESS COUNTER
 
 def initialize_attempts():
     """Start the guess counter at zero."""
@@ -374,9 +360,7 @@ def display_final_attempts(attempts):
     print_small_line()
 
 
-# =========================================================
-# SECTION 10: GUESS HISTORY
-# =========================================================
+# SECTION : GUESS HISTORY
 
 def create_guess_history():
     """Create an empty list for guesses."""
@@ -432,9 +416,7 @@ def display_last_guess(history):
         print("You have not guessed yet.")
 
 
-# =========================================================
-# SECTION 11: ADDITIONAL GAME HINTS
-# =========================================================
+# SECTION : ADDITIONAL GAME HINTS
 
 def check_if_even(number):
     """Check whether a number is even."""
@@ -509,9 +491,7 @@ def calculate_middle(lower, upper):
     return (lower + upper) // 2
 
 
-# =========================================================
-# SECTION 12: GAME STATISTICS
-# =========================================================
+# SECTION : GAME STATS
 
 def create_default_statistics():
     """Create the default statistics dictionary."""
@@ -694,9 +674,7 @@ def reset_statistics():
     return_to_menu()
 
 
-# =========================================================
-# SECTION 13: WINNING MESSAGE
-# =========================================================
+# SECTION : WINNING MESSAGE
 
 def display_winning_message():
     """Display a congratulatory message."""
@@ -734,9 +712,7 @@ def display_performance_message(attempts):
         print("Congratulations on your persistence!")
 
 
-# =========================================================
-# SECTION 14: MAIN GAME FUNCTION
-# =========================================================
+# SECTION : MAIN GAME FUNCTION
 
 def play_game():
     """Run one complete guessing game."""
@@ -816,9 +792,7 @@ def play_game():
     return attempts
 
 
-# =========================================================
-# SECTION 15: REPLAY FUNCTION
-# =========================================================
+# SECTION : REPLAY FUNCTION
 
 def ask_to_play_again():
     """Ask whether the player wants another game."""
@@ -865,9 +839,7 @@ def replay_game():
             break
 
 
-# =========================================================
-# SECTION 16: MENU FUNCTIONS
-# =========================================================
+# SECTION : MENU FUNCTIONS
 
 def start_new_game():
     """Start a new game session."""
@@ -901,9 +873,7 @@ def open_reset_menu():
     reset_statistics()
 
 
-# =========================================================
-# SECTION 17: MAIN PROGRAM
-# =========================================================
+# SECTION : MAIN PROGRAM
 
 def main():
     """Control the entire program."""
@@ -965,9 +935,7 @@ def main():
                 time.sleep(1)
 
 
-# =========================================================
-# SECTION 18: PROGRAM START
-# =========================================================
+# SECTION : PROGRAM START
 
 if __name__ == "__main__":
 
@@ -975,5 +943,5 @@ if __name__ == "__main__":
 
 
 # =========================================================
-# END OF NUMBER GUESSING GAME
+# END OF NUMBER GUESSER GAME
 # =========================================================

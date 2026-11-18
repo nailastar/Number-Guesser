@@ -2,7 +2,7 @@
 import random
 
 # ==========================================
-# NUMBER GUESSING GAME
+# NUMBER GUESSER
 # ==========================================
 
 # Game settings
@@ -23,7 +23,7 @@ best_score = 0
 def display_menu():
 
     print("\n" + "=" * 40)
-    print("         NUMBER GUESSING GAME")
+    print("         NUMBER GUESSER ")
     print("=" * 40)
 
     print("1. Start Game")
@@ -44,7 +44,7 @@ def display_rules():
 
     print("1. The computer selects a random number.")
     print("2. The number will be between 1 and 100.")
-    print("3. You have unlimited attempts.")
+    print("3. You have UNLIMITED attempts.")
     print("4. Enter a number to make a guess.")
     print("5. The computer will give you hints.")
     print("6. If your guess is too low, guess higher.")
@@ -75,7 +75,7 @@ def display_rules():
 def game_introduction():
 
     print("\n" + "=" * 40)
-    print("       WELCOME TO THE GUESSING GAME")
+    print("       WELCOME TO NUMBER GUESSER")
     print("=" * 40)
 
     print("The computer has selected a number.")
@@ -312,13 +312,13 @@ def display_game_information():
     print("          GAME INFORMATION")
     print("=" * 40)
 
-    print("Game: Number Guessing Game")
+    print("Game: Number Guesser")
 
     print("Minimum Number:", MIN_NUMBER)
 
     print("Maximum Number:", MAX_NUMBER)
 
-    print("Attempts: Unlimited")
+    print("Attempts: UNLIMITED")
 
     print("Number Selection: Random")
 
@@ -333,7 +333,7 @@ def display_game_information():
 
 def display_welcome():
 
-    print("\nWelcome to the Number Guessing Game!")
+    print("\nWelcome to the Number Guesser!")
 
     print("Get ready to test your guessing skills.")
 
@@ -391,7 +391,7 @@ def display_attempt_information(attempts):
 
     print("Total guesses:", attempts)
 
-    print("Attempts remaining: Unlimited")
+    print("Attempts remaining: UNLIMITED")
 
     print("------------------------------")
 
@@ -430,7 +430,7 @@ def display_correct_message():
 
     print("\nYou got it right!")
 
-    print("The secret number has been found.")
+    print("The number has been found.")
 
     print("Great job!")
 

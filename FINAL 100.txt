@@ -1,0 +1,629 @@
+
+import random
+
+# ==========================================
+# NUMBER GUESSER
+# ==========================================
+
+# Game settings
+MIN_NUMBER = 1
+MAX_NUMBER = 100
+
+# Game statistics
+games_played = 0
+games_won = 0
+total_guesses = 0
+best_score = 0
+
+
+# ==========================================
+# DISPLAY MENU
+# ==========================================
+
+def display_menu():
+
+    print("\n" + "=" * 40)
+    print("         NUMBER GUESSER ")
+    print("=" * 40)
+
+    print("1. Start Game")
+    print("2. Game Rules")
+
+    print("=" * 40)
+
+
+# ==========================================
+# DISPLAY GAME RULES
+# ==========================================
+
+def display_rules():
+
+    print("\n" + "=" * 40)
+    print("             GAME RULES")
+    print("=" * 40)
+
+    print("1. The computer selects a random number.")
+    print("2. The number will be between 1 and 100.")
+    print("3. You have UNLIMITED attempts.")
+    print("4. Enter a number to make a guess.")
+    print("5. The computer will give you hints.")
+    print("6. If your guess is too low, guess higher.")
+    print("7. If your guess is too high, guess lower.")
+    print("8. Keep guessing until you find the number.")
+    print("9. Your attempts will be counted.")
+    print("10. Guess correctly to win the game!")
+
+    print("=" * 40)
+
+    print("\n1. Return to Menu")
+
+    while True:
+
+        choice = input("\nEnter your choice: ")
+
+        if choice == "1":
+            return
+
+        else:
+            print("Invalid choice. Please enter 1.")
+
+
+# ==========================================
+# DISPLAY GAME INTRODUCTION
+# ==========================================
+
+def game_introduction():
+
+    print("\n" + "=" * 40)
+    print("       WELCOME TO NUMBER GUESSER")
+    print("=" * 40)
+
+    print("The computer has selected a number.")
+    print("The number is between 1 and 100.")
+    print("Try to guess the correct number!")
+    print("You can make unlimited guesses.")
+
+    print("=" * 40)
+
+
+# ==========================================
+# GET PLAYER GUESS
+# ==========================================
+
+def get_guess():
+
+    while True:
+
+        guess = input("\nEnter your guess: ")
+
+        try:
+
+            guess = int(guess)
+
+            if guess < MIN_NUMBER:
+
+                print("Your number is too small.")
+                print("Please enter a number from 1 to 100.")
+
+            elif guess > MAX_NUMBER:
+
+                print("Your number is too large.")
+                print("Please enter a number from 1 to 100.")
+
+            else:
+
+                return guess
+
+        except ValueError:
+
+            print("Invalid input.")
+            print("Please enter a whole number.")
+
+
+# ==========================================
+# CHECK PLAYER GUESS
+# ==========================================
+
+def check_guess(guess, number):
+
+    if guess == number:
+
+        return "correct"
+
+    elif guess < number:
+
+        return "low"
+
+    else:
+
+        return "high"
+
+
+# ==========================================
+# DISPLAY GUESS RESULT
+# ==========================================
+
+def display_guess_result(result):
+
+    if result == "low":
+
+        print("\nToo Low!")
+        print("Try guessing a higher number.")
+
+    elif result == "high":
+
+        print("\nToo High!")
+        print("Try guessing a lower number.")
+
+    elif result == "correct":
+
+        print("\nCorrect!")
+        print("You found the secret number!")
+
+
+# ==========================================
+# DISPLAY WIN MESSAGE
+# ==========================================
+
+def display_win_message(attempt):
+
+    print("\n" + "=" * 40)
+    print("          CONGRATULATIONS!")
+    print("=" * 40)
+
+    print("You guessed the correct number!")
+    print("Number of guesses:", attempt)
+
+    print("You successfully won the game!")
+
+    print("=" * 40)
+
+
+# ==========================================
+# DISPLAY GAME OVER MESSAGE
+# ==========================================
+
+def display_game_over(number):
+
+    print("\n" + "=" * 40)
+    print("              GAME OVER")
+    print("=" * 40)
+
+    print("The correct number was:", number)
+
+    print("Thank you for playing!")
+
+    print("=" * 40)
+
+
+# ==========================================
+# PLAY THE GAME
+# ==========================================
+
+def play_game():
+
+    global games_played
+    global games_won
+    global total_guesses
+    global best_score
+
+    # Generate a random number
+    random_number = random.randint(
+        MIN_NUMBER,
+        MAX_NUMBER
+    )
+
+    # Start counting guesses
+    attempts = 0
+
+    # Display introduction
+    game_introduction()
+
+    # Continue until the player wins
+    while True:
+
+        # Get a valid player guess
+        guess = get_guess()
+
+        # Count the guess
+        attempts += 1
+
+        # Check the guess
+        result = check_guess(
+            guess,
+            random_number
+        )
+
+        # Display the result
+        display_guess_result(result)
+
+        # Check whether the player won
+        if result == "correct":
+
+            # Display congratulations
+            display_win_message(attempts)
+
+            # Update statistics
+            games_won += 1
+            total_guesses += attempts
+
+            # Update best score
+            if best_score == 0:
+
+                best_score = attempts
+
+            elif attempts < best_score:
+
+                best_score = attempts
+
+            break
+
+        # Display remaining instructions
+        else:
+
+            print("Attempts so far:", attempts)
+
+            print("Keep trying!")
+
+    # Count completed games
+    games_played += 1
+
+
+# ==========================================
+# DISPLAY GAME STATISTICS
+# ==========================================
+
+def display_statistics():
+
+    print("\n" + "=" * 40)
+    print("           GAME STATISTICS")
+    print("=" * 40)
+
+    print("Games Played:", games_played)
+
+    print("Games Won:", games_won)
+
+    print("Total Guesses:", total_guesses)
+
+    if games_won > 0:
+
+        print("Best Score:", best_score)
+
+        average = total_guesses / games_won
+
+        print("Average Guesses:", round(average, 2))
+
+    else:
+
+        print("Best Score: No wins yet.")
+
+        print("Average Guesses: No data yet.")
+
+    print("=" * 40)
+
+
+# ==========================================
+# DISPLAY GAME INFORMATION
+# ==========================================
+
+def display_game_information():
+
+    print("\n" + "=" * 40)
+    print("          GAME INFORMATION")
+    print("=" * 40)
+
+    print("Game: Number Guesser")
+
+    print("Minimum Number:", MIN_NUMBER)
+
+    print("Maximum Number:", MAX_NUMBER)
+
+    print("Attempts: UNLIMITED")
+
+    print("Number Selection: Random")
+
+    print("Game Type: Single Player")
+
+    print("=" * 40)
+
+
+# ==========================================
+# DISPLAY WELCOME MESSAGE
+# ==========================================
+
+def display_welcome():
+
+    print("\nWelcome to the Number Guesser!")
+
+    print("Get ready to test your guessing skills.")
+
+    print("Good luck!")
+
+
+# ==========================================
+# DISPLAY GOODBYE MESSAGE
+# ==========================================
+
+def display_goodbye():
+
+    print("\n" + "=" * 40)
+
+    print("Thank you for playing!")
+
+    print("We hope you enjoyed the game.")
+
+    print("=" * 40)
+
+
+# ==========================================
+# DISPLAY MENU INSTRUCTIONS
+# ==========================================
+
+def menu_instructions():
+
+    print("\nPlease select an option.")
+
+    print("Enter 1 to start playing.")
+
+    print("Enter 2 to read the rules.")
+
+
+# ==========================================
+# DISPLAY INVALID MENU MESSAGE
+# ==========================================
+
+def invalid_menu_choice():
+
+    print("\nInvalid choice.")
+
+    print("Please select 1 or 2.")
+
+
+# ==========================================
+# DISPLAY ATTEMPT INFORMATION
+# ==========================================
+
+def display_attempt_information(attempts):
+
+    print("\nGuess Information")
+
+    print("------------------------------")
+
+    print("Total guesses:", attempts)
+
+    print("Attempts remaining: UNLIMITED")
+
+    print("------------------------------")
+
+
+# ==========================================
+# DISPLAY LOW GUESS MESSAGE
+# ==========================================
+
+def display_low_message():
+
+    print("\nYour guess is lower than the answer.")
+
+    print("Try a bigger number.")
+
+    print("You can keep guessing!")
+
+
+# ==========================================
+# DISPLAY HIGH GUESS MESSAGE
+# ==========================================
+
+def display_high_message():
+
+    print("\nYour guess is higher than the answer.")
+
+    print("Try a smaller number.")
+
+    print("You can keep guessing!")
+
+
+# ==========================================
+# DISPLAY CORRECT GUESS MESSAGE
+# ==========================================
+
+def display_correct_message():
+
+    print("\nYou got it right!")
+
+    print("The number has been found.")
+
+    print("Great job!")
+
+
+# ==========================================
+# DISPLAY START MESSAGE
+# ==========================================
+
+def display_start_message():
+
+    print("\nThe game is starting.")
+
+    print("The computer is selecting a number.")
+
+    print("Get ready to guess!")
+
+
+# ==========================================
+# DISPLAY NUMBER RANGE
+# ==========================================
+
+def display_number_range():
+
+    print("\nThe number is between:")
+
+    print(MIN_NUMBER, "and", MAX_NUMBER)
+
+    print("Remember this range while guessing.")
+
+
+# ==========================================
+# DISPLAY UNLIMITED ATTEMPTS
+# ==========================================
+
+def display_unlimited_attempts():
+
+    print("\nThere is no attempt limit.")
+
+    print("You can guess as many times as needed.")
+
+    print("Keep trying until you win!")
+
+
+# ==========================================
+# DISPLAY GAME SUMMARY
+# ==========================================
+
+def display_game_summary(attempts):
+
+    print("\n" + "=" * 40)
+
+    print("             GAME SUMMARY")
+
+    print("=" * 40)
+
+    print("Your total guesses:", attempts)
+
+    print("Game completed successfully!")
+
+    print("Thank you for participating.")
+
+    print("=" * 40)
+
+
+# ==========================================
+# CHECK NUMBER RANGE
+# ==========================================
+
+def check_number_range(number):
+
+    if number >= MIN_NUMBER and number <= MAX_NUMBER:
+
+        return True
+
+    else:
+
+        return False
+
+
+# ==========================================
+# GENERATE RANDOM NUMBER
+# ==========================================
+
+def generate_random_number():
+
+    number = random.randint(
+        MIN_NUMBER,
+        MAX_NUMBER
+    )
+
+    return number
+
+
+# ==========================================
+# DISPLAY RANDOM NUMBER INFORMATION
+# ==========================================
+
+def random_number_information():
+
+    print("\nThe computer has selected a number.")
+
+    print("The number is hidden from the player.")
+
+    print("Try to discover the number!")
+
+
+# ==========================================
+# DISPLAY PLAYER INSTRUCTIONS
+# ==========================================
+
+def player_instructions():
+
+    print("\nHow to Play:")
+
+    print("Step 1: Enter a number.")
+
+    print("Step 2: Read the computer's hint.")
+
+    print("Step 3: Adjust your next guess.")
+
+    print("Step 4: Continue until you are correct.")
+
+
+# ==========================================
+# DISPLAY GAME TIPS
+# ==========================================
+
+def display_game_tips():
+
+    print("\n" + "=" * 40)
+
+    print("              GAME TIPS")
+
+    print("=" * 40)
+
+    print("Tip 1: Start with a number near 50.")
+
+    print("Tip 2: Listen to the hints.")
+
+    print("Tip 3: Guess higher when told too low.")
+
+    print("Tip 4: Guess lower when told too high.")
+
+    print("Tip 5: Remember your previous guesses.")
+
+    print("Tip 6: Take your time.")
+
+    print("Tip 7: Keep practicing.")
+
+    print("Tip 8: Have fun!")
+
+    print("=" * 40)
+
+
+# ==========================================
+# MAIN PROGRAM
+# ==========================================
+
+def main():
+
+    display_welcome()
+
+    # Keep displaying the menu
+    while True:
+
+        display_menu()
+
+        menu_instructions()
+
+        choice = input("\nEnter your choice (1-2): ")
+
+        # Start the game
+        if choice == "1":
+
+            display_start_message()
+
+            play_game()
+
+        # Display game rules
+        elif choice == "2":
+
+            display_rules()
+
+        # Handle invalid choices
+        else:
+
+            invalid_menu_choice()
+
+
+# ==========================================
+# START THE PROGRAM
+# ==========================================
+
+if __name__ == "__main__":
+
+    main()
